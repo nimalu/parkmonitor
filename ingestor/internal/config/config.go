@@ -16,7 +16,7 @@ type Config struct {
 func ParseFlags() *Config {
 	dbPath := flag.String("db", "parking.db", "Path to SQLite database file")
 	interval := flag.Duration("interval", 5*time.Minute, "Polling interval")
-	cities := flag.String("cities", "Dresden,Basel,Hamburg", "Comma-separated list of cities to monitor")
+	cities := flag.String("cities", "Karlsruhe,Stuttgart", "Comma-separated list of cities to monitor")
 	flag.Parse()
 
 	return &Config{

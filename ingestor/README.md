@@ -23,7 +23,7 @@ A Go-based service that periodically fetches parking availability data from the 
 
 ### Basic Usage
 
-Run with default settings (Dresden, Basel, Hamburg; 5-minute intervals):
+Run with default settings (Karlsruhe, Stuttgart; 5-minute intervals):
 
 ```bash
 ./build/parking-ingestor [options]
@@ -34,7 +34,7 @@ Run with default settings (Dresden, Basel, Hamburg; 5-minute intervals):
 - `-db <path>` - Path to SQLite database file (default: `parking.db`)
 - `-interval <duration>` - Polling interval (default: `5m`)
   - Examples: `1m`, `30s`, `1h`, `15m`
-- `-cities <list>` - Comma-separated list of cities to monitor (default: `Dresden,Basel,Hamburg`)
+- `-cities <list>` - Comma-separated list of cities to monitor (default: `Karlsruhe,Stuttgart`)
 
 ### Examples
 
