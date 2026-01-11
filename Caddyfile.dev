@@ -1,0 +1,22 @@
+# Development Caddyfile
+# Simulates production Caddy setup locally on port 8080
+# Use: docker-compose --profile dev up -d
+
+http://localhost:8080 {
+	# API endpoints
+	handle /api/* {
+		uri strip_prefix /api
+		reverse_proxy forecast:8000
+	}
+
+	# Frontend
+	handle {
+		reverse_proxy frontend:3000
+	}
+
+	# Enable logging
+	log {
+		output stdout
+		format console
+	}
+}

@@ -6,6 +6,7 @@ from datetime import datetime
 from typing import Optional, List
 
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 # Add src to path
@@ -63,6 +64,15 @@ app = FastAPI(
     version="0.1.0",
     docs_url=None,
     redoc_url=None,
+)
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Global variables for model and data
