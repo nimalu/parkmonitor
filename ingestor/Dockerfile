@@ -43,3 +43,4 @@ VOLUME /data
 
 # Run the application
 ENTRYPOINT ["./parking-ingestor"]
+CMD ["-db", "/data/parking.db"]

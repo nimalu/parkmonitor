@@ -8,7 +8,6 @@ services:
     environment:
       - DB_PATH=/data/parking.db
       - POLL_INTERVAL=5m
-      - CITIES=Karlsruhe
     volumes:
       - ./data:/data
     healthcheck:

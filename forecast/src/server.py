@@ -217,7 +217,11 @@ async def get_current_status(lot_id: Optional[str] = Query(None, description="Fi
         )
         
         merged['occupied'] = merged['total'] - merged['free']
-        merged['occupancy_rate'] = (merged['occupied'] / merged['total']) * 100
+        # Handle division by zero and ensure valid float values
+        merged['occupancy_rate'] = merged.apply(
+            lambda row: 0.0 if row['total'] == 0 else (row['occupied'] / row['total']) * 100,
+            axis=1
+        )
         
         return [
             CurrentStatus(

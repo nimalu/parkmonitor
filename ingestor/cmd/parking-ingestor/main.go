@@ -16,7 +16,24 @@ func main() {
 	log.Printf("Starting parking ingestor...")
 	log.Printf("Database: %s", cfg.DBPath)
 	log.Printf("Polling interval: %v", cfg.Interval)
-	log.Printf("Cities: %s", strings.Join(cfg.Cities, ", "))
+
+	// Create API client
+	client := api.NewClient()
+
+	// If no cities specified, fetch all available cities
+	if len(cfg.Cities) == 0 {
+		log.Printf("No cities specified, fetching all available cities...")
+		citiesMap, err := client.GetCities()
+		if err != nil {
+			log.Fatalf("Failed to fetch cities: %v", err)
+		}
+		for cityID := range citiesMap {
+			cfg.Cities = append(cfg.Cities, cityID)
+		}
+		log.Printf("Found %d cities", len(cfg.Cities))
+	}
+
+	log.Printf("Monitoring cities: %s", strings.Join(cfg.Cities, ", "))
 
 	// Initialize database
 	db, err := database.InitDB(cfg.DBPath)
@@ -25,8 +42,7 @@ func main() {
 	}
 	defer db.Close()
 
-	// Create API client and ingestor
-	client := api.NewClient()
+	// Create ingestor and start
 	ing := ingestor.New(db, client, cfg.Cities, cfg.Interval)
 	ing.Start()
 }
