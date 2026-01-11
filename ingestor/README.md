@@ -44,23 +44,13 @@ docker build -t parking-ingestor .
 
 ### Native Execution
 
-Run with default settings (Karlsruhe, Stuttgart; 5-minute intervals):
+Run with custom settings:
 
 ```bash
-make run
-# or
-./build/parking-ingestor
+./build/parking-ingestor -db parking.db -cities Karlsruhe -interval 5m
 ```
 
 ### Docker Execution
-
-**Run with default settings:**
-```bash
-docker run -d \
-  --name parking-ingestor \
-  -v $(pwd)/data:/data \
-  parking-ingestor
-```
 
 **Run with custom settings:**
 ```bash
@@ -83,7 +73,7 @@ docker logs -f parking-ingestor
 - `-db <path>` - Path to SQLite database file (default: `parking.db`)
 - `-interval <duration>` - Polling interval (default: `5m`)
   - Examples: `1m`, `30s`, `1h`, `15m`
-- `-cities <list>` - Comma-separated list of cities to monitor (default: `Karlsruhe,Stuttgart`)
+- `-cities <list>` - Comma-separated list of cities to monitor (required)
 
 ### Examples
 
