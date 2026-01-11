@@ -41,10 +41,5 @@ USER parking
 # Set data volume
 VOLUME /data
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD test -f ${DB_PATH} || exit 1
-
 # Run the application
 ENTRYPOINT ["./parking-ingestor"]
-CMD ["-db", "/data/parking.db", "-interval", "5m", "-cities", "Karlsruhe,Heidelberg"]

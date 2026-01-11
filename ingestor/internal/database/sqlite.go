@@ -2,6 +2,8 @@ package database
 
 import (
 	"database/sql"
+	"os"
+	"path/filepath"
 	"time"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -32,6 +34,12 @@ type ParkingReading struct {
 
 // InitDB initializes the SQLite database and creates tables if they don't exist
 func InitDB(dbPath string) (*sql.DB, error) {
+	// Ensure the directory exists
+	dir := filepath.Dir(dbPath)
+	if err := os.MkdirAll(dir, 0755); err != nil {
+		return nil, err
+	}
+
 	db, err := sql.Open("sqlite3", dbPath)
 	if err != nil {
 		return nil, err
