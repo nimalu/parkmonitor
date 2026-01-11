@@ -6,8 +6,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/niklas/smart-city/ingestor/internal/api"
-	"github.com/niklas/smart-city/ingestor/internal/database"
+	"github.com/niklas/parkmonitor/ingestor/internal/api"
+	"github.com/niklas/parkmonitor/ingestor/internal/database"
 )
 
 // Ingestor handles the periodic polling and data storage

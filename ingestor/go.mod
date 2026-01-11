@@ -1,4 +1,4 @@
-module github.com/niklas/smart-city/ingestor
+module github.com/niklas/parkmonitor/ingestor
 
 go 1.22
 

@@ -4,10 +4,10 @@ import (
 	"log"
 	"strings"
 
-	"github.com/niklas/smart-city/ingestor/internal/api"
-	"github.com/niklas/smart-city/ingestor/internal/config"
-	"github.com/niklas/smart-city/ingestor/internal/database"
-	"github.com/niklas/smart-city/ingestor/internal/ingestor"
+	"github.com/niklas/parkmonitor/ingestor/internal/api"
+	"github.com/niklas/parkmonitor/ingestor/internal/config"
+	"github.com/niklas/parkmonitor/ingestor/internal/database"
+	"github.com/niklas/parkmonitor/ingestor/internal/ingestor"
 )
 
 func main() {
