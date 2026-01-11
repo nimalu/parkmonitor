@@ -1,0 +1,7 @@
+.pixi/
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.DS_Store
+models/*.pkl
+!models/.gitkeep
