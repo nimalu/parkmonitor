@@ -41,15 +41,10 @@ USER parking
 # Set data volume
 VOLUME /data
 
-# Default environment variables
-ENV DB_PATH=/data/parking.db
-ENV POLL_INTERVAL=5m
-ENV CITIES=Karlsruhe,Stuttgart
-
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD test -f ${DB_PATH} || exit 1
 
 # Run the application
 ENTRYPOINT ["./parking-ingestor"]
-CMD ["-db", "/data/parking.db", "-interval", "5m", "-cities", "Karlsruhe,Stuttgart"]
+CMD ["-db", "/data/parking.db", "-interval", "5m", "-cities", "Karlsruhe,Heidelberg"]

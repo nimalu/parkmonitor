@@ -59,7 +59,7 @@ docker run -d \
   -v $(pwd)/data:/data \
   parking-ingestor \
   -db /data/parking.db \
-  -cities Karlsruhe,Stuttgart,Freiburg \
+  -cities Karlsruhe,Freiburg \
   -interval 10m
 ```
 

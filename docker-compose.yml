@@ -10,14 +10,10 @@ services:
       - POLL_INTERVAL=5m
       - CITIES=Karlsruhe
     volumes:
-      - parking-data:/data
+      - ./data:/data
     healthcheck:
       test: ["CMD", "test", "-f", "/data/parking.db"]
       interval: 30s
       timeout: 3s
       start_period: 5s
       retries: 3
-
-volumes:
-  parking-data:
-    driver: local
