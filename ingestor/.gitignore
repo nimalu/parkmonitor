@@ -8,6 +8,9 @@ build/
 *.db-shm
 *.db-wal
 
+# Data directory
+data/
+
 # Ignore Go build artifacts
 *.exe
 *.exe~

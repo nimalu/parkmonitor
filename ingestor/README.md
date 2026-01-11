@@ -14,19 +14,68 @@ A Go-based service that periodically fetches parking availability data from the 
 
 ### Prerequisites
 
+**Native:**
 - Go 1.22 or higher
 - GCC (for SQLite CGO compilation)
+
+**Docker:**
+- Docker (for containerized deployment)
+
+### Build
+
+**Using Make:**
+```bash
+make build
+```
+
+**Using Go directly:**
+```bash
+go build -o build/parking-ingestor ./cmd/parking-ingestor
+```
+
+**Using Docker:**
+```bash
+docker build -t parking-ingestor .
+```
 
 
 
 ## Usage
 
-### Basic Usage
+### Native Execution
 
 Run with default settings (Karlsruhe, Stuttgart; 5-minute intervals):
 
 ```bash
-./build/parking-ingestor [options]
+make run
+# or
+./build/parking-ingestor
+```
+
+### Docker Execution
+
+**Run with default settings:**
+```bash
+docker run -d \
+  --name parking-ingestor \
+  -v $(pwd)/data:/data \
+  parking-ingestor
+```
+
+**Run with custom settings:**
+```bash
+docker run -d \
+  --name parking-ingestor \
+  -v $(pwd)/data:/data \
+  parking-ingestor \
+  -db /data/parking.db \
+  -cities Karlsruhe,Stuttgart,Freiburg \
+  -interval 10m
+```
+
+**View logs:**
+```bash
+docker logs -f parking-ingestor
 ```
 
 ### Command-line Options

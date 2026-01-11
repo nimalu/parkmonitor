@@ -1,0 +1,11 @@
+# Docker ignore patterns
+.git
+.gitignore
+*.md
+build/
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+data/
+Makefile
