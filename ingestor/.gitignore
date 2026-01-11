@@ -1,0 +1,28 @@
+# Ignore build directory and binaries
+build/
+/parking-ingestor
+
+# Ignore database files
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Ignore Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
